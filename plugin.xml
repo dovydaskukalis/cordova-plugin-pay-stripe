@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="cordova-plugin-pay-stripe"
+      version="1.0.0">
+
+    <name>Apple Pay</name>
+    <description>Implements Apple Pay.</description>
+    <keywords>cordova,payment,apple pay</keywords>
+    <repo>https://github.com/dovydaskukalis/cordova-plugin-apple-pay-stripe</repo>
+
+    <preference name="STRIPE_LIVE_PUBLISHABLE_KEY" />
+    <preference name="STRIPE_TEST_PUBLISHABLE_KEY" />
+    <preference name="APPLE_MERCHANT_IDENTIFIER" />
+
+    <platform name="ios">
+
+        <js-module src="www/applepay.js" name="payment">
+            <clobbers target="ApplePay" />
+        </js-module>
+
+        <framework src="PassKit.framework"/>
+
+        <header-file src="src/ios/CDVApplePay.h"/>
+        <source-file src="src/ios/CDVApplePay.m"/>
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="ApplePay">
+                <param name="ios-package" value="CDVApplePay"/>
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="StripeLivePublishableKey">
+            <string>$STRIPE_LIVE_PUBLISHABLE_KEY</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="StripeTestPublishableKey">
+            <string>$STRIPE_TEST_PUBLISHABLE_KEY</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="AppleMerchantIdentifier">
+            <string>$APPLE_MERCHANT_IDENTIFIER</string>
+        </config-file>
+
+    </platform>
+
+</plugin>
