@@ -23,6 +23,17 @@
         <header-file src="src/ios/CDVApplePay.h"/>
         <source-file src="src/ios/CDVApplePay.m"/>
 
+        <config-file target="*-Debug.plist" parent="com.apple.developer.in-app-payments">
+            <array>
+                <string>$APPLE_MERCHANT_IDENTIFIER</string>
+            </array>
+        </config-file>
+        <config-file target="*-Release.plist" parent="com.apple.developer.in-app-payments">
+            <array>
+                <string>$APPLE_MERCHANT_IDENTIFIER</string>
+            </array>
+        </config-file>
+
         <config-file target="config.xml" parent="/*">
             <feature name="ApplePay">
                 <param name="ios-package" value="CDVApplePay"/>

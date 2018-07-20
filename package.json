@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-pay-stripe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description":
     "An adapted Cordova plugin to provide Apple Pay functionality. Based on cordova-plugin-applepay.",
   "main": "www/applepay.js",
